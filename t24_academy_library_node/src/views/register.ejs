@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>アカウント作成 | MT書籍管理</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/register.css" />
+  </head>
+  <body>
+    <div class="contents">
+      <%- include('sidebar') %>
+      <div class="main_contents">
+        <div class="header"></div>
+        <div class="inner_contens">
+          <h1>アカウント登録</h1>
+          <form id="register_form" action="/register" method="post">
+            <table>
+              <caption></caption>
+              <tbody>
+                <tr>
+                  <th scope="col">社員番号:</th>
+                  <td>
+                    <input type="text" name="employeeId" required />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">氏名:</th>
+                  <td>
+                    <input type="text" name="name" required />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">メールアドレス:</th>
+                  <td>
+                    <input
+                      type="email"
+                      name="email"
+                      autocomplete="new-email"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">パスワード:</th>
+                  <td>
+                    <input
+                      type="password"
+                      name="password"
+                      autocomplete="new-password"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col">権限区分:</th>
+                  <td>
+                    <% for (let i = 0; i < authorizationTypeList.length; i++) {
+                    %>
+                    <input
+                      type="radio"
+                      name="authorizationType"
+                      value="<%= authorizationTypeList[i].id %>"
+                    />
+                    <label><%= authorizationTypeList[i].name %></label>
+                    <% } %>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="btn_block">
+              <a th:href="/login">戻る</a>
+              <input type="submit" value="アカウント作成" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('footer') %>
+  </body>
+</html>

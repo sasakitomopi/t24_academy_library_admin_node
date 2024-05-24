@@ -13,3 +13,14 @@ services:
       - 3000
     ports:
       - "3000:3000"
+
+  metateam_academy_mysql_node:
+    build: ./docker/mysql
+    container_name: 'metateam_academy_mysql_node'
+    volumes:
+      - ./docker/mysql/logs:/var/log/mysql # コンテナのログを同期
+      - db-store:/var/lib/mysql
+    ports:
+      - "3306:3306" # ポートマッピングを修正
+volumes:
+  db-store:

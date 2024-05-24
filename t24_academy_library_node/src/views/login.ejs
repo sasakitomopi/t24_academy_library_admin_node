@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>ログイン | MT書籍管理</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="contents">
+      <div class="main_contents">
+        <%- include('header') %>
+        <div class="inner_contens">
+          <h1>ログイン</h1>
+          <% if (error) { %>
+          <div class="error_msg">
+            メールアドレスまたはパスワードが違います。
+          </div>
+          <% } %> <% if (logout) { %>
+          <div class="error_msg">ログアウト済みです。</div>
+          <% } %>
+          <form id="login_form" action="/login" method="post">
+            <table>
+              <caption></caption>
+              <tbody>
+                <tr>
+                  <th scope="col">メールアドレス:</th>
+                  <td><input type="text" name="email" required /></td>
+                </tr>
+                <tr>
+                  <th scope="col">パスワード:</th>
+                  <td><input type="password" name="password" required /></td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit">ログイン</button>
+          </form>
+          <div>
+            <div>アカウントがありませんか？</div>
+            <div><a href="/register">アカウント作成</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('footer') %>
+  </body>
+</html>
